@@ -409,7 +409,7 @@ def main():
         test_set.set_feat_func(ExtractFeature(model_w, TVT))
         print('\n=========> Test Model #{} on dataset: {} <=========\n'
               .format(i + 1, name))
-        mAP[i], cmc_scores[i], re_mAP[i], re_cmc_scores[i] = test_set.eval(
+        mAP[i+1], cmc_scores[i+1], re_mAP[i+1], re_cmc_scores[i+1] = test_set.eval(
           normalize_feat=cfg.normalize_feature,
           use_local_distance=use_local_distance,to_re_rank=True)
     return mAP, cmc_scores, re_mAP, re_cmc_scores
