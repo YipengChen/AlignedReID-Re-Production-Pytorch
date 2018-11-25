@@ -225,6 +225,7 @@ class TestSet(Dataset):
     with measure_time('Computing scores for Global Distance...'):
       mAP, cmc_scores = compute_score(global_q_g_dist)
 
+    re_mAP, re_cmc_scores = None, None
     if to_re_rank:
       with measure_time('Re-ranking...'):
         # query-query distance using global distance
@@ -240,7 +241,7 @@ class TestSet(Dataset):
           global_q_g_dist, global_q_q_dist, global_g_g_dist)
 
       with measure_time('Computing scores for re-ranked Global Distance...'):
-        mAP, cmc_scores = compute_score(re_r_global_q_g_dist)
+        re_mAP, re_cmc_scores = compute_score(re_r_global_q_g_dist)
 
 
     if use_local_distance:
@@ -297,4 +298,4 @@ class TestSet(Dataset):
     # TODO: allow local distance in Multi Query
     mq_mAP, mq_cmc_scores = None, None
 
-    return mAP, cmc_scores, mq_mAP, mq_cmc_scores
+    return mAP, cmc_scores, re_mAP, re_cmc_scores
