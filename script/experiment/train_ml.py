@@ -412,10 +412,10 @@ def main():
         mAP_temp, cmc_scores_temp, re_mAP_temp, re_cmc_scores_temp = test_set.eval(
           normalize_feat=cfg.normalize_feature,
           use_local_distance=use_local_distance,to_re_rank=True)
-      mAP.append(mAP_temp)
-      cmc_scores.append(cmc_scores_temp)
-      re_mAP.append(re_mAP_temp)
-      re_cmc_scores.append(re_cmc_scores_temp)
+        mAP.append(mAP_temp)
+        cmc_scores.append(cmc_scores_temp)
+        re_mAP.append(re_mAP_temp)
+        re_cmc_scores.append(re_cmc_scores_temp)
     return mAP, cmc_scores, re_mAP, re_cmc_scores
 
   if cfg.only_test:
