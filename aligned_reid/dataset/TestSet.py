@@ -201,7 +201,7 @@ class TestSet(Dataset):
         separate_camera_set=self.separate_camera_set,
         single_gallery_shot=self.single_gallery_shot,
         first_match_break=self.first_match_break,
-        topk=10)
+        topk=100)
       return mAP, cmc_scores
 
     # A helper function just for avoiding code duplication.
