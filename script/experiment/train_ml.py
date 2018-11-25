@@ -39,6 +39,8 @@ from aligned_reid.utils.utils import set_seed
 from aligned_reid.utils.utils import adjust_lr_exp
 from aligned_reid.utils.utils import adjust_lr_staircase
 
+import scipy.io as scio
+
 
 class Config(object):
   def __init__(self):
@@ -420,6 +422,15 @@ def main():
 
   if cfg.only_test:
     mAP, cmc_scores, re_mAP, re_cmc_scores = test(load_model_weight=True)
+	
+	##### save top 100 CMC rank
+    for i in range(2):
+      if not re_mAP is None:
+        scio.savemat(cfg.exp_dir+'/CMC_model_'+str(i)+'.mat', {'mAP':mAP[i],'cmc_scores':cmc_scores[i],
+                                                       're_mAP':re_mAP[i],'re_cmc_scores':re_cmc_scores[i]})
+      else:
+        scio.savemat(cfg.exp_dir+'/CMC_model_'+str(i)+'.mat', {'mAP':mAP[i],'cmc_scores':cmc_scores[i]})
+													   
     return
 
   ############
