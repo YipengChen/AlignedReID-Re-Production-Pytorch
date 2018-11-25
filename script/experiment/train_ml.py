@@ -401,9 +401,9 @@ def main():
                          and cfg.local_dist_own_hard_sample
 
     mAP = []
-	cmc_scores = []
-	re_mAP = []
-	re_cmc_scores = []
+    cmc_scores = []
+    re_mAP = []
+    re_cmc_scores = []
     for i, (model_w, TVT) in enumerate(zip(model_ws, TVTs)):
       for test_set, name in zip(test_sets, test_set_names):
         test_set.set_feat_func(ExtractFeature(model_w, TVT))
